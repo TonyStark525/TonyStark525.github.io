@@ -174,6 +174,72 @@
     
     
     <article
+  id="post-innerclass"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/11/20/innerclass/"
+    >Java内部类的理解与使用</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/11/20/innerclass/" class="article-date">
+  <time datetime="2021-11-20T13:00:51.000Z" itemprop="datePublished">2021-11-20</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Java内部类的理解与使用"><a href="#Java内部类的理解与使用" class="headerlink" title="[Java内部类的理解与使用]"></a>[Java内部类的理解与使用]</h1><h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h2 id="非静态内部类"><a href="#非静态内部类" class="headerlink" title="非静态内部类"></a>非静态内部类</h2><p>非静态内部类在使用常用的是直接放入类中，在使用过程中需要通过外部类的的对象才能调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class OuterClass &#123;</span><br><span class="line">    public String outerName;</span><br><span class="line">    public OuterClass()&#123;</span><br><span class="line">        outerName = &quot;外部类&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    public void display()&#123;</span><br><span class="line">        System.out.println(outerName);</span><br><span class="line">    &#125;</span><br><span class="line">    class InnerClass&#123;</span><br><span class="line">        public String innerName;</span><br><span class="line">        public InnerClass()&#123;</span><br><span class="line">            innerName = &quot;内部类&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        public void display()&#123;</span><br><span class="line">            System.out.println(innerName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //外部类的创建</span><br><span class="line">        OuterClass outerClass = new OuterClass();</span><br><span class="line">        //外部类的使用</span><br><span class="line">        outerClass.display();</span><br><span class="line">        //内部类（类中）的创建</span><br><span class="line">        InnerClass  innerClass = outerClass.new InnerClass();</span><br><span class="line">        //内部类的使用</span><br><span class="line">        innerClass.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://img2020.cnblogs.com/blog/2638700/202111/2638700-20211118151009853-344541367.png" alt="img"></p>
+<p> 同样还能直接放入方法体中，那样就不需要使用外部类对象就可以直接调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class OuterClass &#123;</span><br><span class="line">    public String outerName;</span><br><span class="line">    public OuterClass()&#123;</span><br><span class="line">        outerName = &quot;外部类&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    public void display()&#123;</span><br><span class="line">        System.out.println(outerName);</span><br><span class="line">        class InnerClass&#123;</span><br><span class="line">            public String innerName;</span><br><span class="line">            public InnerClass()&#123;</span><br><span class="line">                innerName = &quot;方法体中的内部类&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            public void display()&#123;</span><br><span class="line">                System.out.println(innerName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        InnerClass innerClass = new InnerClass();</span><br><span class="line">        innerClass.display();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //外部类的创建</span><br><span class="line">        OuterClass outerClass = new OuterClass();</span><br><span class="line">        //外部类的使用</span><br><span class="line">        outerClass.display();</span><br><span class="line">        //内部类（类中）的创建</span><br><span class="line"></span><br><span class="line">        //内部类的使用</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img2020.cnblogs.com/blog/2638700/202111/2638700-20211118151250614-1592055606.png" alt="img"></p>
+<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><p>静态内部类可以直接通过类名进行调用，无需外部类的对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class OuterClass &#123;</span><br><span class="line">    public String outerName;</span><br><span class="line">    public OuterClass()&#123;</span><br><span class="line">        outerName = &quot;外部类&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    public void display()&#123;</span><br><span class="line">        System.out.println(outerName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static class InnerClass&#123;</span><br><span class="line">        public String innerName;</span><br><span class="line">        public InnerClass()&#123;</span><br><span class="line">            innerName = &quot;静态内部类&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        public void display()&#123;</span><br><span class="line">            System.out.println(innerName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //外部类的创建</span><br><span class="line">        OuterClass outerClass = new OuterClass();</span><br><span class="line">        //外部类的使用</span><br><span class="line">        outerClass.display();</span><br><span class="line">        //内部类（类中）的创建</span><br><span class="line">        InnerClass innerClass = new InnerClass();</span><br><span class="line">        //内部类的使用</span><br><span class="line">        innerClass.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img2020.cnblogs.com/blog/2638700/202111/2638700-20211118151907063-283862776.png" alt="img"></p>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>匿名内部类是最常见的内部类的使用方法，它针对接口（抽象类）可以直接使用，无需额外创建一个类来实现它的接口，同样它的缺点也很明显，耦合度高。</p>
+<p> Pet.java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Pet &#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">MyInterface.java</span><br><span class="line">public interface MyInterface &#123;</span><br><span class="line">    public void display();</span><br><span class="line">&#125;</span><br><span class="line">Test.java</span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //接口使用匿名内部类</span><br><span class="line">        MyInterface myInterface = new MyInterface() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void display() &#123;</span><br><span class="line">                System.out.println(&quot;接口的匿名内部类的使用&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        myInterface.display();</span><br><span class="line">        //抽象类使用匿名内部类</span><br><span class="line">        Pet pet = new Pet() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void eat() &#123;</span><br><span class="line">                System.out.println(&quot;抽象类使用匿名内部类&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        pet.eat();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img2020.cnblogs.com/blog/2638700/202111/2638700-20211118152655743-1420739923.png" alt="img"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-note"
   class="article article-type-post"
   itemscope
