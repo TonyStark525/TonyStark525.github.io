@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>About Me</title>
-    <url>/2021/11/21/about/</url>
-    <content><![CDATA[<blockquote>
-<p>一位喜欢rap篮球不喜欢唱跳的牛马</p>
-<p>Marvel粉CSGO选手</p>
-</blockquote>
-<p>姓名：TT<br>现居：湖南<br>GitHub: <a href="https://github.com/TonyStark525">TonyStark525</a><br>QQ: 1832163211<br>微信: Y11J22L</p>
-<span id="more"></span>
-
-<!-- ![avatar.jpg](https://i.loli.net/2019/12/02/Hw5WJIMKzi1YrU8.jpg) -->
-
-<img src="http://m.qpic.cn/psc?/V54WCKNt3LsF2t0e6dNA0snyjW1dTM2f/45NBuzDIW489QBoVep5mcZP37T5vtCJuEToa*I2pmOWd5s7v26dv874Ub.DsH43aAmYLNOmjUyMxawY7LmvLFPdfSc6SnvYkeAZelZiQOzQ!/b&bo=dgOkBQAAAAADV6Y!&rf=viewer_4r" width="500" style="border-radius:70%"/>]]></content>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java内部类的理解与使用</title>
     <url>/2021/11/20/innerclass/</url>
-    <content><![CDATA[<h1 id="Java内部类的理解与使用"><a href="#Java内部类的理解与使用" class="headerlink" title="[Java内部类的理解与使用]"></a>[Java内部类的理解与使用]</h1><h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h2 id="非静态内部类"><a href="#非静态内部类" class="headerlink" title="非静态内部类"></a>非静态内部类</h2><p>非静态内部类在使用常用的是直接放入类中，在使用过程中需要通过外部类的的对象才能调用。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Java内部类的理解与使用"><a href="#Java内部类的理解与使用" class="headerlink" title="[Java内部类的理解与使用]"></a>[Java内部类的理解与使用]</h1><h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h2 id="非静态内部类"><a href="#非静态内部类" class="headerlink" title="非静态内部类"></a>非静态内部类</h2><p>非静态内部类在使用常用的是直接放入类中，在使用过程中需要通过外部类的的对象才能调用。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class OuterClass &#123;</span><br><span class="line">    public String outerName;</span><br><span class="line">    public OuterClass()&#123;</span><br><span class="line">        outerName = &quot;外部类&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    public void display()&#123;</span><br><span class="line">        System.out.println(outerName);</span><br><span class="line">    &#125;</span><br><span class="line">    class InnerClass&#123;</span><br><span class="line">        public String innerName;</span><br><span class="line">        public InnerClass()&#123;</span><br><span class="line">            innerName = &quot;内部类&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        public void display()&#123;</span><br><span class="line">            System.out.println(innerName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //外部类的创建</span><br><span class="line">        OuterClass outerClass = new OuterClass();</span><br><span class="line">        //外部类的使用</span><br><span class="line">        outerClass.display();</span><br><span class="line">        //内部类（类中）的创建</span><br><span class="line">        InnerClass  innerClass = outerClass.new InnerClass();</span><br><span class="line">        //内部类的使用</span><br><span class="line">        innerClass.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p> <img src="https://img2020.cnblogs.com/blog/2638700/202111/2638700-20211118151009853-344541367.png" alt="img"></p>
@@ -46,9 +29,26 @@
       </tags>
   </entry>
   <entry>
+    <title>About Me</title>
+    <url>/2021/11/21/about/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><blockquote>
+<p>一位喜欢rap篮球不喜欢唱跳的牛马</p>
+<p>Marvel粉CSGO选手</p>
+</blockquote>
+<p>姓名：TT<br>现居：湖南<br>GitHub: <a href="https://github.com/TonyStark525">TonyStark525</a><br>QQ: 1832163211<br>微信: Y11J22L</p>
+<span id="more"></span>
+
+<!-- ![avatar.jpg](https://i.loli.net/2019/12/02/Hw5WJIMKzi1YrU8.jpg) -->
+
+<img src="http://m.qpic.cn/psc?/V54WCKNt3LsF2t0e6dNA0snyjW1dTM2f/45NBuzDIW489QBoVep5mcZP37T5vtCJuEToa*I2pmOWd5s7v26dv874Ub.DsH43aAmYLNOmjUyMxawY7LmvLFPdfSc6SnvYkeAZelZiQOzQ!/b&bo=dgOkBQAAAAADV6Y!&rf=viewer_4r" width="500" style="border-radius:70%"/>]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>重写equals</title>
     <url>/2021/11/20/note/</url>
-    <content><![CDATA[<h1 id="Java重写equals方法（重点讲解）"><a href="#Java重写equals方法（重点讲解）" class="headerlink" title="Java重写equals方法（重点讲解）"></a>Java重写equals方法（重点讲解）</h1><p><strong>为什么equals()方法要重写？</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Java重写equals方法（重点讲解）"><a href="#Java重写equals方法（重点讲解）" class="headerlink" title="Java重写equals方法（重点讲解）"></a>Java重写equals方法（重点讲解）</h1><p><strong>为什么equals()方法要重写？</strong></p>
 <p>判断两个对象在逻辑上是否相等，如根据类的成员变量来判断两个类的实例是否相等，而继承Object中的equals方法只能判断两个引用变量是否是同一个对象。这样我们往往需要重写equals()方法。</p>
 <p>我们向一个没有重复对象的集合中添加元素时，集合中存放的往往是对象，我们需要先判断集合中是否存在已知对象，这样就必须重写equals方法。</p>
 <p><strong>怎样重写equals()方法？</strong></p>
